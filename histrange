@@ -1,0 +1,12 @@
+#!/bin/bash
+
+HISTPATH="/home/tani/.bash_history"
+
+history -r $HISTPATH
+
+if [ $# -ne 2 ] || [ $1 -gt $2 ]; then
+ echo 'ERROR! Format should be like  "$ histrange 100 200" (From 100th TO 200th. Note that 1st arg is greater than or equal to 2nd)'  
+else
+ history |sed -n "$1,$2p" 
+fi
+

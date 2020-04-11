@@ -1,0 +1,26 @@
+#!/bin/bash
+export DISPLAY=:0
+XTE="xte -x$DISPLAY"
+XPOS="xmousepos"
+$XTE 'mousemove 200 200'
+$XTE 'mouseclick 1'
+$XTE 'key Return'
+
+sleep 0.2
+
+for i in `seq $1`
+do
+	sleep 0.3
+	$XTE 'keydown Control_R'
+	sleep 0.3
+	$XTE 'key m'
+	sleep 0.5
+	$XTE 'keyup Control_R'
+	sleep 0.3
+	$XTE 'key Return'
+	sleep 0.3
+done
+
+$XTE 'keyup Control_R'
+
+

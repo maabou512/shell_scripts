@@ -1,0 +1,14 @@
+#!/bin/bash
+
+tempfile1=$(mktemp)
+
+#echo $tempfile1
+sed -e 's/<[^>]*>//g' $1  |sed -e 's/"\/>//g'|sed -e 's/">//g'|sed -e '/^$/d'|sed '1d;n;s/^/> / '|sed -e '2d;n;s/$/\n/'  > $tempfile1
+cat $tempfile1 > $2
+
+
+
+
+
+ 
+
